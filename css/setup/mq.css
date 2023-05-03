@@ -1,0 +1,38 @@
+/* JUST MOBILE */
+@media (max-width: 640px) {
+    body {
+        background-color: rgb(177, 36, 36);
+    }
+}
+
+/* UNTIL MEDIUM */
+@media (max-width: 1010px) {
+    body {
+        background-color: rgb(241, 241, 240);
+    }
+   
+    .main-container{
+        flex-direction: column-reverse;
+
+    }
+}
+
+/* SMALL */
+@media (min-width: 540px) {
+    body {
+        background-color: rgb(146, 152, 22);
+    }
+}
+
+
+/* MEDIUM */
+@media (min-width: 1010px) {
+    body {
+        background-color: rgb(50, 33, 114);
+    }
+
+    .main-container{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
