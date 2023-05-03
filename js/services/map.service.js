@@ -1,10 +1,13 @@
 
-
+//temp
+var nums = 1
+var markArr = []
 
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    removeMarker
 }
 
 
@@ -21,12 +24,11 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 center: { lat, lng },
                 zoom: 15
             })
-            console.log('Map!', gMap)
             gMap.addListener('click', (ev) => {
-                console.log('Adding a marker')
-                console.log(ev.latLng.lat())
-                console.log(ev.latLng.lng())
-                mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
+                const lat = ev.latLng.lat()
+                const lng = ev.latLng.lng()
+                var marker = mapService.addMarker({ lat, lng })
+                markArr.push(marker)
             })
         })
 }
@@ -35,7 +37,7 @@ function addMarker(loc) {
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
-        title: 'Hello World!'
+        title: `mark${nums++}`
     })
     return marker
 }
@@ -49,7 +51,7 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyAjLJQCyka1xBkUgb4kLF8_S6c1BJajXww' //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyAjLJQCyka1xBkUgb4kLF8_S6c1BJajXww'
     var elGoogleApi = document.createElement('script')
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
     elGoogleApi.async = true
@@ -59,4 +61,12 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+function removeMarker() {
+    // console.log(markArr)
+    // console.log(markArr[0].title)
+    markArr[markArr.length -1].setMap(null)
+    markArr.pop()
+
 }

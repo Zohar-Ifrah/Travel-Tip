@@ -13,7 +13,11 @@
    
     .main-container{
         flex-direction: column-reverse;
+    }
 
+    .head-btn{
+        flex-direction: column;
+        margin-inline-end: 0em;
     }
 }
 
@@ -21,6 +25,11 @@
 @media (min-width: 540px) {
     body {
         background-color: rgb(146, 152, 22);
+    }
+
+    .head-btn{
+        flex-direction: column;
+        margin-inline-end: 0.3em;
     }
 }
 
@@ -34,5 +43,10 @@
     .main-container{
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .head-btn {
+        flex-direction: row;
+        margin-inline-end: 1em;
     }
 }

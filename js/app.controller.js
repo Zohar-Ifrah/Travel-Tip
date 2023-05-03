@@ -1,18 +1,22 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { weatherService } from "./services/weather.service.js"
 
 window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
-
+window.setWeather = setWeather
+window.onDeleteMarker = onDeleteMarker
 function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready')
         })
         .catch(() => console.log('Error: cannot init map'))
+
+    setWeather()
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -49,4 +53,18 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
+}
+
+function setWeather() {
+    const  elWeather = document.querySelector('.weather span')
+    locService.getLocs().then(locs => 
+        weatherService.getWeather(locs[0].lat, locs[0].lng)
+            .then(weatherInfo =>   elWeather.innerText = `
+            ${weatherInfo.city}, ${weatherInfo.country}. ${weatherInfo.desciption}
+            ${weatherInfo.temp} tempeture from ${weatherInfo.minTemp} to ${weatherInfo.maxTemp} \u2103 wind ${weatherInfo.wind} m/s`)
+    )
+}
+
+function onDeleteMarker(){
+    mapService.removeMarker()
 }
