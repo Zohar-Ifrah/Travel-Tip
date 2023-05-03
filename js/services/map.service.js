@@ -22,7 +22,12 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap)
-            gMap.addListener('click', addMarker)
+            gMap.addListener('click', (ev) => {
+                console.log('Adding a marker')
+                console.log(ev.latLng.lat())
+                console.log(ev.latLng.lng())
+                mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
+            })
         })
 }
 

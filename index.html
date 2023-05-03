@@ -9,19 +9,31 @@
 </head>
 
 <body>
-    <h1>Travel-Tip</h1>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
-
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations:
-    <pre class="locs"></pre>
-    </p>
-
-
+    <section class="main-layout">
+        <section class="head-container">
+            <header class="head-header">
+                <h1>Travel-Tip</h1>
+                <p>You are at: <span class="user-pos"></span></p>
+                <p>Locations:</p>
+            </header>
+            <section class="head-btn">
+                <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
+                <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
+                <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
+                <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
+            </section>
+        </section>
+        <main class="main-container">
+            <section class="info-container">
+                <div>Weather today</div>
+                <div>Location table</div>
+            </section>
+            <section class="map-container">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+            </section>
+        </main>
+        <pre class="locs"></pre>
+    </section>
     <script type="module" src="js/app.controller.js"></script>
 </body>
 
