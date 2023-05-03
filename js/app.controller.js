@@ -23,8 +23,10 @@ function getPosition() {
     })
 }
 
-function onAddMarker() {
+function onAddMarker(ev) {
     console.log('Adding a marker')
+    console.log(ev.latLng.lat())
+    console.log(ev.latLng.lng())
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
 }
 
